@@ -3,7 +3,7 @@
     <div class="iq-navbar-custom">
        <nav class="navbar navbar-expand-lg navbar-light p-0">
           <div class="iq-navbar-logo d-flex justify-content-between">
-             <a href="../dashboard/index.html">
+             <a href="{{ url('/') }}">
                 <img src="../assets/images/logo.png" class="img-fluid" alt="">
                 <span>SocialV</span>
              </a>
@@ -282,7 +282,7 @@
                             </div>
                          </div>
                          <div class="card-body p-0 ">
-                            <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                            <a href="{{ url('/profile') }}" class="iq-sub-card iq-bg-primary-hover">
                                <div class="d-flex align-items-center">
                                   <div class="rounded card-icon bg-soft-primary">
                                      <i class="ri-file-user-line"></i>
@@ -293,7 +293,7 @@
                                   </div>
                                </div>
                             </a>
-                            <a href="profile-edit.html" class="iq-sub-card iq-bg-warning-hover">
+                            <a href="{{ url('/profile-edit') }}" class="iq-sub-card iq-bg-warning-hover">
                                <div class="d-flex align-items-center">
                                   <div class="rounded card-icon bg-soft-warning">
                                      <i class="ri-profile-line"></i>
@@ -304,7 +304,7 @@
                                   </div>
                                </div>
                             </a>
-                            <a href="account-setting.html" class="iq-sub-card iq-bg-info-hover">
+                            <a href="{{ url('/setting') }}" class="iq-sub-card iq-bg-info-hover">
                                <div class="d-flex align-items-center">
                                   <div class="rounded card-icon bg-soft-info">
                                      <i class="ri-account-box-line"></i>
@@ -315,7 +315,7 @@
                                   </div>
                                </div>
                             </a>
-                            <a href="privacy-setting.html" class="iq-sub-card iq-bg-danger-hover">
+                            <a href="{{ url('/privacy-setting') }}" class="iq-sub-card iq-bg-danger-hover">
                                <div class="d-flex align-items-center">
                                   <div class="rounded card-icon bg-soft-danger">
                                      <i class="ri-lock-line"></i>
@@ -328,7 +328,7 @@
                                </div>
                             </a>
                             <div class="d-inline-block w-100 text-center p-3">
-                               <a class="btn btn-primary iq-sign-btn" href="sign-in.html" role="button">Sign
+                               <a class="btn btn-primary iq-sign-btn" href="{{ url('/sign-in') }}" role="button">Sign
                                   out<i class="ri-login-box-line ms-2"></i></a>
                             </div>
                          </div>
