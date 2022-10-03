@@ -20,26 +20,26 @@
       id="dark-mode" data-active="true"><i class="ri-sun-line"></i></button>
    
 </nav>
-<!-- Backend Bundle JavaScript -->
+
 <script src="../assets/js/libs.min.js"></script>
-<!-- slider JavaScript -->
+
 <script src="../assets/js/slider.js"></script>
-<!-- masonry JavaScript -->
+
 <script src="../assets/js/masonry.pkgd.min.js"></script>
-<!-- SweetAlert JavaScript -->
+
 <script src="../assets/js/enchanter.js"></script>
-<!-- SweetAlert JavaScript -->
+
 <script src="../assets/js/sweetalert.js"></script>
-<!-- Chart Custom JavaScript -->
+
 <script src="../assets/js/customizer.js"></script>
-<!-- app JavaScript -->
+
 <script src="../assets/js/charts/weather-chart.js"></script>
 <script src="../assets/js/app.js"></script>
 <script src="../assets/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
 <script src="../assets/js/lottie.js"></script>
 
 
-<!-- offcanvas start -->
+
 
 <div class="offcanvas offcanvas-bottom share-offcanvas" tabindex="-1" id="share-btn"
    aria-labelledby="shareBottomLabel">

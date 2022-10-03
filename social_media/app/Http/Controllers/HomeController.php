@@ -53,4 +53,28 @@ class HomeController extends Controller
  
     return view('file');
    }
+
+   public function news()
+   {
+ 
+    return view('news');
+   }
+
+   public function event()
+   {
+ 
+    return view('event');
+   }
+
+   public function notification()
+   {
+ 
+    return view('notification');
+   }
+
+   public function friend()
+   {
+ 
+    return view('friend');
+   }
 }

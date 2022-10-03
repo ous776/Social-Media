@@ -5,5 +5,5 @@
 @include('navbar')
 
 @include('right_sidebar')
-   
-   @include('footer')
+
+@include('footer')

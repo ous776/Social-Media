@@ -1,9 +1,4 @@
- <!-- loader Start -->
- <div id="loading">
-    <div id="loading-center">
-    </div>
- </div>
- <!-- loader END -->
+
 
 <div class="wrapper">
     <div class="iq-sidebar  sidebar-default ">
@@ -11,7 +6,7 @@
           <nav class="iq-sidebar-menu">
              <ul id="iq-sidebar-toggle" class="iq-menu">
                 <li class="active">
-                   <a href="#" class=" ">
+                   <a href="{{ url('/news') }}" class=" ">
                       <i class="las la-newspaper"></i><span>Newsfeed</span>
                    </a>
                 </li>

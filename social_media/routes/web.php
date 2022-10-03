@@ -41,3 +41,7 @@ Route::get('/gallery',[HomeController::class,'gallery']);
 
 Route::get('/setting',[HomeController::class,'settings']);
 
+Route::get('/news',[HomeController::class,'news']);
+
+Route::get('/notification',[HomeController::class,'notification']);
+
