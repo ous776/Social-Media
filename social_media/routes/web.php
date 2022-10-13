@@ -39,9 +39,15 @@ Route::get('/file',[HomeController::class,'file']);
 
 Route::get('/gallery',[HomeController::class,'gallery']);
 
-Route::get('/setting',[HomeController::class,'settings']);
+Route::get('/account-setting',[HomeController::class,'settings']);
+
+Route::get('/privacy-setting',[HomeController::class,'privacy_settings']);
 
 Route::get('/news',[HomeController::class,'news']);
+
+Route::get('/sign-up',[HomeController::class,'sign_up']);
+
+Route::get('/sign-in',[HomeController::class,'sign_in']);
 
 Route::get('/notification',[HomeController::class,'notification']);
 

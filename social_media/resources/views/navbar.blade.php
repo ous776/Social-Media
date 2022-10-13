@@ -304,7 +304,7 @@
                                   </div>
                                </div>
                             </a>
-                            <a href="{{ url('/setting') }}" class="iq-sub-card iq-bg-info-hover">
+                            <a href="{{ url('/account-setting') }}" class="iq-sub-card iq-bg-info-hover">
                                <div class="d-flex align-items-center">
                                   <div class="rounded card-icon bg-soft-info">
                                      <i class="ri-account-box-line"></i>

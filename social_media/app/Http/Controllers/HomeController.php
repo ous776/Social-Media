@@ -12,6 +12,18 @@ class HomeController extends Controller
     return view('home');
    }
 
+   public function sign_in()
+   {
+ 
+    return view('sign_in');
+   }
+
+   public function sign_up()
+   {
+ 
+    return view('sign_up');
+   }
+
    public function profile()
    {
  
@@ -22,6 +34,12 @@ class HomeController extends Controller
    {
  
     return view('account_setting');
+   }
+
+   public function privacy_settings()
+   {
+ 
+    return view('privacy_setting');
    }
 
    public function chat()
