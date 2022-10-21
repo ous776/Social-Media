@@ -49,5 +49,7 @@ Route::get('/sign-up',[HomeController::class,'sign_up']);
 
 Route::get('/sign-in',[HomeController::class,'sign_in']);
 
+Route::get('/create-account',[HomeController::class,'add_info']);
+
 Route::get('/notification',[HomeController::class,'notification']);
 

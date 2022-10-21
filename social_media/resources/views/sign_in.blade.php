@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="sign-info">
                                     <span class="dark-color d-inline-block line-height-2">Don't have an account? <a
-                                            href="sign-up.html">Sign up</a></span>
+                                            href="{{ url('/sign-up') }}">Sign up</a></span>
                                
                                 </div>
                             </form>
