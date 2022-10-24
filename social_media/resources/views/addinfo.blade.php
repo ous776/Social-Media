@@ -61,7 +61,8 @@
     }
 
     #msform input,
-    #msform textarea, #msform select {
+    #msform textarea,
+    #msform select {
         padding: 0px 8px 4px 8px;
         border: none;
         border-bottom: 1px solid #ccc;
@@ -131,8 +132,8 @@
         border-bottom: 1px solid #ccc;
         padding: 2px 5px 3px 5px;
         margin: 2px;
-        
-        
+
+
     }
 
     select.list-dt:focus {
@@ -276,7 +277,7 @@
                     <div class="row">
                         <div class="col-md-12 mx-0">
                             <form id="msform">
-                              
+
                                 <fieldset>
 
                                     <div class="form-card" style="">
@@ -284,23 +285,23 @@
                                         <input type="text" name="fname" placeholder="First Name" />
                                         <input type="text" name="lname" placeholder="Last Name" />
                                         <input type="email" name="email" placeholder="Email Id" />
-                                        <select name="status" id=""  >
-                                            <option >Status</option>
-                                            <option value="Student">Student</option>
-                                            <option value="Staff">Staff</option>
-                                            <option value="Alumni">Alumni</option>
-                                            <option value="Other">Other</option>
+                                        <select name="status" id="status" onchange="changeStatus()">
+                                            <option>Status</option>
+                                            <option value="student">Student</option>
+                                            <option value="staff">Staff</option>
+                                            <option value="alumni">Alumni</option>
+                                            <option value="other">Other</option>
                                         </select>
                                     </div>
-                                    
+
                                     <input type="button" name="next" class="next action-button" value="Next Step" />
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
                                         <h2 class="fs-title">Personal Information</h2>
                                         <label for="country">Country of Origin</label>
-                                        <select id="country" name="country" >
-                                            <option ></option>
+                                        <select id="country" name="country">
+                                            <option></option>
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Åland Islands">Åland Islands</option>
                                             <option value="Albania">Albania</option>
@@ -332,7 +333,8 @@
                                             <option value="Botswana">Botswana</option>
                                             <option value="Bouvet Island">Bouvet Island</option>
                                             <option value="Brazil">Brazil</option>
-                                            <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                                            <option value="British Indian Ocean Territory">British Indian Ocean
+                                                Territory</option>
                                             <option value="Brunei Darussalam">Brunei Darussalam</option>
                                             <option value="Bulgaria">Bulgaria</option>
                                             <option value="Burkina Faso">Burkina Faso</option>
@@ -351,7 +353,8 @@
                                             <option value="Colombia">Colombia</option>
                                             <option value="Comoros">Comoros</option>
                                             <option value="Congo">Congo</option>
-                                            <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
+                                            <option value="Congo, The Democratic Republic of The">Congo, The Democratic
+                                                Republic of The</option>
                                             <option value="Cook Islands">Cook Islands</option>
                                             <option value="Costa Rica">Costa Rica</option>
                                             <option value="Cote D'ivoire">Cote D'ivoire</option>
@@ -370,14 +373,16 @@
                                             <option value="Eritrea">Eritrea</option>
                                             <option value="Estonia">Estonia</option>
                                             <option value="Ethiopia">Ethiopia</option>
-                                            <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                                            <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)
+                                            </option>
                                             <option value="Faroe Islands">Faroe Islands</option>
                                             <option value="Fiji">Fiji</option>
                                             <option value="Finland">Finland</option>
                                             <option value="France">France</option>
                                             <option value="French Guiana">French Guiana</option>
                                             <option value="French Polynesia">French Polynesia</option>
-                                            <option value="French Southern Territories">French Southern Territories</option>
+                                            <option value="French Southern Territories">French Southern Territories
+                                            </option>
                                             <option value="Gabon">Gabon</option>
                                             <option value="Gambia">Gambia</option>
                                             <option value="Georgia">Georgia</option>
@@ -395,15 +400,18 @@
                                             <option value="Guinea-bissau">Guinea-bissau</option>
                                             <option value="Guyana">Guyana</option>
                                             <option value="Haiti">Haiti</option>
-                                            <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
-                                            <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+                                            <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald
+                                                Islands</option>
+                                            <option value="Holy See (Vatican City State)">Holy See (Vatican City State)
+                                            </option>
                                             <option value="Honduras">Honduras</option>
                                             <option value="Hong Kong">Hong Kong</option>
                                             <option value="Hungary">Hungary</option>
                                             <option value="Iceland">Iceland</option>
                                             <option value="India">India</option>
                                             <option value="Indonesia">Indonesia</option>
-                                            <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+                                            <option value="Iran, Islamic Republic of">Iran, Islamic Republic of
+                                            </option>
                                             <option value="Iraq">Iraq</option>
                                             <option value="Ireland">Ireland</option>
                                             <option value="Isle of Man">Isle of Man</option>
@@ -416,11 +424,13 @@
                                             <option value="Kazakhstan">Kazakhstan</option>
                                             <option value="Kenya">Kenya</option>
                                             <option value="Kiribati">Kiribati</option>
-                                            <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+                                            <option value="Korea, Democratic People's Republic of">Korea, Democratic
+                                                People's Republic of</option>
                                             <option value="Korea, Republic of">Korea, Republic of</option>
                                             <option value="Kuwait">Kuwait</option>
                                             <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                            <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                                            <option value="Lao People's Democratic Republic">Lao People's Democratic
+                                                Republic</option>
                                             <option value="Latvia">Latvia</option>
                                             <option value="Lebanon">Lebanon</option>
                                             <option value="Lesotho">Lesotho</option>
@@ -430,7 +440,8 @@
                                             <option value="Lithuania">Lithuania</option>
                                             <option value="Luxembourg">Luxembourg</option>
                                             <option value="Macao">Macao</option>
-                                            <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+                                            <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The
+                                                Former Yugoslav Republic of</option>
                                             <option value="Madagascar">Madagascar</option>
                                             <option value="Malawi">Malawi</option>
                                             <option value="Malaysia">Malaysia</option>
@@ -443,7 +454,8 @@
                                             <option value="Mauritius">Mauritius</option>
                                             <option value="Mayotte">Mayotte</option>
                                             <option value="Mexico">Mexico</option>
-                                            <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+                                            <option value="Micronesia, Federated States of">Micronesia, Federated
+                                                States of</option>
                                             <option value="Moldova, Republic of">Moldova, Republic of</option>
                                             <option value="Monaco">Monaco</option>
                                             <option value="Mongolia">Mongolia</option>
@@ -470,7 +482,8 @@
                                             <option value="Oman">Oman</option>
                                             <option value="Pakistan">Pakistan</option>
                                             <option value="Palau">Palau</option>
-                                            <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+                                            <option value="Palestinian Territory, Occupied">Palestinian Territory,
+                                                Occupied</option>
                                             <option value="Panama">Panama</option>
                                             <option value="Papua New Guinea">Papua New Guinea</option>
                                             <option value="Paraguay">Paraguay</option>
@@ -488,8 +501,10 @@
                                             <option value="Saint Helena">Saint Helena</option>
                                             <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
                                             <option value="Saint Lucia">Saint Lucia</option>
-                                            <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
-                                            <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
+                                            <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon
+                                            </option>
+                                            <option value="Saint Vincent and The Grenadines">Saint Vincent and The
+                                                Grenadines</option>
                                             <option value="Samoa">Samoa</option>
                                             <option value="San Marino">San Marino</option>
                                             <option value="Sao Tome and Principe">Sao Tome and Principe</option>
@@ -504,7 +519,8 @@
                                             <option value="Solomon Islands">Solomon Islands</option>
                                             <option value="Somalia">Somalia</option>
                                             <option value="South Africa">South Africa</option>
-                                            <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+                                            <option value="South Georgia and The South Sandwich Islands">South Georgia
+                                                and The South Sandwich Islands</option>
                                             <option value="Spain">Spain</option>
                                             <option value="Sri Lanka">Sri Lanka</option>
                                             <option value="Sudan">Sudan</option>
@@ -516,7 +532,8 @@
                                             <option value="Syrian Arab Republic">Syrian Arab Republic</option>
                                             <option value="Taiwan">Taiwan</option>
                                             <option value="Tajikistan">Tajikistan</option>
-                                            <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+                                            <option value="Tanzania, United Republic of">Tanzania, United Republic of
+                                            </option>
                                             <option value="Thailand">Thailand</option>
                                             <option value="Timor-leste">Timor-leste</option>
                                             <option value="Togo">Togo</option>
@@ -533,7 +550,8 @@
                                             <option value="United Arab Emirates">United Arab Emirates</option>
                                             <option value="United Kingdom">United Kingdom</option>
                                             <option value="United States">United States</option>
-                                            <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                                            <option value="United States Minor Outlying Islands">United States Minor
+                                                Outlying Islands</option>
                                             <option value="Uruguay">Uruguay</option>
                                             <option value="Uzbekistan">Uzbekistan</option>
                                             <option value="Vanuatu">Vanuatu</option>
@@ -547,9 +565,9 @@
                                             <option value="Zambia">Zambia</option>
                                             <option value="Zimbabwe">Zimbabwe</option>
                                         </select>
-                                      
+
                                         <label for="dob">Date of Birth</label>
-                                        <input type="date" name="dob" id="dob" >
+                                        <input type="date" name="dob" id="dob">
                                         <label for="gender">Your gender</label>
                                         <select name="gender" id="gender">
                                             <option></option>
@@ -557,29 +575,45 @@
                                             <option value="female">Female</option>
                                         </select>
                                         <label for="marital-status">Marital Status</label>
-                                        <select name="marital-status" >
+                                        <select name="marital-status">
                                             <option></option>
                                             <option value="married">Married</option>
                                             <option value="single">Single</option>
                                         </select>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <label class="pay">Address</label>
+                                            </div>
+                                            <div class="col-3">
+                                                <input type="text" placeholder="City">
+                                            </div>
+                                            <div class="col-3">
+                                                <input type="text" placeholder="Country">
+                                            </div>
+                                        </div>
                                         <input type="text" name="phno" placeholder="Contact No." />
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"
                                         value="Previous" />
-                                    <input type="button" name="next" class="next action-button" value="Next Step" />
+                                    <input type="button" name="next" class="next action-button"
+                                        value="Next Step" />
                                 </fieldset>
                                 <fieldset>
-                                    <div class="form-card">
+                                    <div class="form-card" id="stud">
                                         <h2 class="fs-title">School Information</h2>
                                         <input type="text" name="studentno" placeholder="Student Number" />
                                         <select name="program" id="">
-                                            <option >Program</option>
-                                            <option value="Information Technology (English)">BSc Information Technology (English)</option>
-                                            <option value="Information Technology (Turkish)">BSc Information Technology (Turkish)</option>
-                                            <option value="Information Technology (English)">MSc Information Technology (English)</option>
-                                            <option value="Information Technology (Turkish)">MSc Information Technology (Turkish)</option>
+                                            <option>Program</option>
+                                            <option value="Information Technology (English)">BSc Information Technology
+                                                (English)</option>
+                                            <option value="Information Technology (Turkish)">BSc Information Technology
+                                                (Turkish)</option>
+                                            <option value="Information Technology (English)">MSc Information Technology
+                                                (English)</option>
+                                            <option value="Information Technology (Turkish)">MSc Information Technology
+                                                (Turkish)</option>
                                         </select>
-                                       
+
                                         <div class="row">
                                             <div class="col-3">
                                                 <label class="pay">Start Date</label>
@@ -605,49 +639,49 @@
                                                 <select class="list-dt" id="year" name="expyear">
                                                     <option selected>Year</option>
                                                     <option value="1979">1979</option>
-    <option value="1980">1980</option>
-    <option value="1981">1981</option>
-    <option value="1982">1982</option>
-    <option value="1983">1983</option>
-    <option value="1984">1984</option>
-    <option value="1985">1985</option>
-    <option value="1986">1986</option>
-    <option value="1987">1987</option>
-    <option value="1988">1988</option>
-    <option value="1989">1989</option>
-    <option value="1990">1990</option>
-    <option value="1991">1991</option>
-    <option value="1992">1992</option>
-    <option value="1993">1993</option>
-    <option value="1994">1994</option>
-    <option value="1995">1995</option>
-    <option value="1996">1996</option>
-    <option value="1997">1997</option>
-    <option value="1998">1998</option>
-    <option value="1999">1999</option>
-    <option value="2000">2000</option>
-    <option value="2001">2001</option>
-    <option value="2002">2002</option>
-    <option value="2003">2003</option>
-    <option value="2004">2004</option>
-    <option value="2005">2005</option>
-    <option value="2006">2006</option>
-    <option value="2007">2007</option>
-    <option value="2008">2008</option>
-    <option value="2009">2009</option>
-    <option value="2010">2010</option>
-    <option value="2011">2011</option>
-    <option value="2012">2012</option>
-    <option value="2013">2013</option>
-    <option value="2014">2014</option>
-    <option value="2015">2015</option>
-    <option value="2016">2016</option>
-    <option value="2017">2017</option>
-    <option value="2018">2018</option>
-    <option value="2019">2019</option>
-    <option value="2020">2020</option>
-    <option value="2021">2021</option>
-    <option value="2022">2022</option>
+                                                    <option value="1980">1980</option>
+                                                    <option value="1981">1981</option>
+                                                    <option value="1982">1982</option>
+                                                    <option value="1983">1983</option>
+                                                    <option value="1984">1984</option>
+                                                    <option value="1985">1985</option>
+                                                    <option value="1986">1986</option>
+                                                    <option value="1987">1987</option>
+                                                    <option value="1988">1988</option>
+                                                    <option value="1989">1989</option>
+                                                    <option value="1990">1990</option>
+                                                    <option value="1991">1991</option>
+                                                    <option value="1992">1992</option>
+                                                    <option value="1993">1993</option>
+                                                    <option value="1994">1994</option>
+                                                    <option value="1995">1995</option>
+                                                    <option value="1996">1996</option>
+                                                    <option value="1997">1997</option>
+                                                    <option value="1998">1998</option>
+                                                    <option value="1999">1999</option>
+                                                    <option value="2000">2000</option>
+                                                    <option value="2001">2001</option>
+                                                    <option value="2002">2002</option>
+                                                    <option value="2003">2003</option>
+                                                    <option value="2004">2004</option>
+                                                    <option value="2005">2005</option>
+                                                    <option value="2006">2006</option>
+                                                    <option value="2007">2007</option>
+                                                    <option value="2008">2008</option>
+                                                    <option value="2009">2009</option>
+                                                    <option value="2010">2010</option>
+                                                    <option value="2011">2011</option>
+                                                    <option value="2012">2012</option>
+                                                    <option value="2013">2013</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2022">2022</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -655,7 +689,7 @@
                                     <input type="button" name="previous" class="previous action-button-previous"
                                         value="Previous" />
                                     <input type="button" name="make_payment" class="next action-button"
-                                        value="Confirm" />
+                                        value="Finish" />
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
@@ -682,11 +716,23 @@
             </div>
         </div>
     </div>
+    <script>
+        function changeStatus(){
+         var status = document.getElementById('status');
+         if(status.value == "staff"){
+            document.getElementById("stud").style.visibility = "hidden";
+         }
+         else
+         {
+            document.getElementById("stud").style.visibility = "visible";
+         }
+        }
+    </script>
 
     <script>
         $(document).ready(function() {
 
-            var current_fs, next_fs, previous_fs; 
+            var current_fs, next_fs, previous_fs;
             var opacity;
 
             $(".next").click(function() {
@@ -706,7 +752,7 @@
                         current_fs.css({
                             'display': 'none',
                             'position': 'relative'
-                            
+
                         });
                         next_fs.css({
                             'opacity': opacity
