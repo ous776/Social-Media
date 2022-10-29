@@ -28,20 +28,12 @@
                                     <li class="swiper-slide">
                                         <img src="../assets/images/user/1.jpg" class="img-fluid mb-4" alt="logo">
                                         <h4 class="mb-1 text-white">Find new friends</h4>
-                                        <p>It is a long established fact that a reader will be distracted by the
-                                            readable content.</p>
+                                      
                                     </li>
                                     <li class="swiper-slide">
                                         <img src="../assets/images/user/1.jpg" class="img-fluid mb-4" alt="logo">
                                         <h4 class="mb-1 text-white">Connect with the world</h4>
-                                        <p>It is a long established fact that a reader will be distracted by the
-                                            readable content.</p>
-                                    </li>
-                                    <li class="swiper-slide">
-                                        <img src="../assets/images/user/1.jpg" class="img-fluid mb-4" alt="logo">
-                                        <h4 class="mb-1 text-white">Create new events</h4>
-                                        <p>It is a long established fact that a reader will be distracted by the
-                                            readable content.</p>
+                                      
                                     </li>
                                 </ul>
                             </div>
@@ -50,37 +42,38 @@
                     <div class="col-md-6 bg-white pt-5 pt-5 pb-lg-0 pb-5">
                         <div class="sign-in-from">
                             <h1 class="mb-0">Sign Up</h1>
-                            <p>Enter your email address and password to access admin panel.</p>
-                            <form class="mt-4">
-                                <div class="form-group">
+                            <p>Create an Account</p>
+                            <form class="mt-4" action="{{ url('create_account') }}" method="Post" enctype="multipart/form-data">
+                              @csrf
+                              <div class="form-group">
                                     
-                                    <input type="email" class="form-control mb-0" id="fname"
-                                        placeholder="First Name">
+                                    <input type="text" class="form-control mb-0" id="fname" name="firstname"
+                                        placeholder="First Name" required>
                                 </div>
                                 <div class="form-group">
                                   
-                                    <input type="email" class="form-control mb-0" id="lname"
-                                        placeholder="Last Name">
+                                    <input type="text" class="form-control mb-0" id="lname" name="lastname"
+                                        placeholder="Last Name" required>
                                 </div>
                                 <div class="form-group">
                                     
-                                    <input type="email" class="form-control mb-0" id="email"
-                                        placeholder="Email Address">
+                                    <input type="email" class="form-control mb-0" id="email" name="email"
+                                        placeholder="Email Address" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control mb-0" id="password"
-                                        placeholder="Password">
+                                    <input type="password" class="form-control mb-0" id="password" name="password"
+                                        placeholder="Password" required>
                                 </div>
-                                <input type="password" class="form-control mb-0" id="password"
-                                    placeholder="Confirm Password">
+                                <input type="password" class="form-control mb-0" id="password" name="cpassword"
+                                    placeholder="Confirm Password" required>
                             </div>
                                 <div class="d-inline-block w-100">
                                     <div class="form-check d-inline-block mt-2 pt-3" style="margin-left: 60px">
-                                        <input type="checkbox" class="form-check-input" id="customCheck1">
+                                        <input type="checkbox" class="form-check-input" id="customCheck1" required>
                                         <label class="form-check-label" for="customCheck1">I accept <a
                                                 href="#">Terms and Conditions</a></label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary float-end " style="margin-right: 60px; margin-top:20px;">Sign Up</button>
+                                    <button type="submit" name="submit" class="btn btn-primary float-end " style="margin-right: 60px; margin-top:20px;">Sign Up</button>
                                 </div>
                                 <div class="sign-info" style="margin-left: 60px">
                                     <span class="dark-color d-inline-block line-height-2">Already Have Account ? <a

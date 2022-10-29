@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('title');
             $table->string('date');
-            $table->string('message');
+            $table->string('content');
             $table->string('image');
             $table->timestamps();
         });
