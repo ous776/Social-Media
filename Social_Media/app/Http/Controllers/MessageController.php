@@ -13,26 +13,58 @@ class MessageController extends Controller
 {
 
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
 
-    public function chat(){
+    public function chat()
+    {
         $messages = Chat::where('chats.sender_id', Auth::id())
-        ->orWhere('chats.receiver_id', Auth::id())
-        ->join('users', 'users.id','=','chats.sender_id')
-        ->join('users as r_user', 'r_user.id','=','chats.receiver_id', 'LEFT')
-        ->select('chats.*', 'users.firstname as s_fname', 'users.lastname as s_lname', 'r_user.firstname as r_fname', 'r_user.lastname as r_lname')
-        ->get();
+            ->orWhere('chats.receiver_id', Auth::id())
+            ->join('users', 'users.id', '=', 'chats.sender_id')
+            ->join('users as r_user', 'r_user.id', '=', 'chats.receiver_id', 'LEFT')
+            ->select('chats.*', 'users.firstname as s_fname', 'users.lastname as s_lname', 'r_user.firstname as r_fname', 'r_user.lastname as r_lname')
+            ->get();
         $result['chats'] = $messages;
         $result['users']  = User::all();
-        
+
         $result['users'] = User::where('id', '!=', Auth::id())->get();
         return view('chat')->with($result);
     }
 
-    public function sendMessage(Request $request){
+    // public function search(Request $request)
+    // {
+    //     // $name = $request->firstname;
+    //     // $lastname = $request->lastname;
+
+    //     $received_data = $request['search'] ?? "";
+        
+    //     if($received_data != '')
+    //     {
+	
+	// $user = User::WHERE('firstname', 'LIKE', '%', $received_data, "%",
+	// 'OR', 'lastname', 'LIKE', "%", $received_data, '%',
+	// 'ORDER', 'BY', 'id',  'DESC')->get();
+	// ;
+    //     }
+    //     else 
+    //     {
+    //         $user = User::all();
+    //     }
+
+
+    //     if ($user) {
+    //         return response()->json(['sts' => true,  'users' => $user]);
+    //     } else {
+    //         return response()->json(['sts' => false, 'u' => '']);
+    //     }
+    // }
+
+
+    public function sendMessage(Request $request)
+    {
         $msg = Chat::create([
             'sender_id' => Auth::id(),
             'receiver_id' => $request->receiver,
@@ -40,44 +72,54 @@ class MessageController extends Controller
         ]);
 
         $message = Chat::where('chats.id', $msg->id)
-        ->join('users', 'users.id','=','chats.sender_id')
-        ->join('users as r_user', 'r_user.id','=','chats.receiver_id', 'LEFT')
-        ->select('chats.*', 'users.firstname as s_fname', 'users.lastname as s_lname', 'r_user.firstname as r_fname', 'r_user.lastname as r_lname')
-        ->first();
-        
+            ->join('users', 'users.id', '=', 'chats.sender_id')
+            ->join('users as r_user', 'r_user.id', '=', 'chats.receiver_id', 'LEFT')
+            ->select('chats.*', 'users.firstname as s_fname', 'users.lastname as s_lname', 'r_user.firstname as r_fname', 'r_user.lastname as r_lname')
+            ->first();
+
         broadcast(new MessageEvent($message, $request->receiver));
 
-        if($message){
+        if ($message) {
             return response()->json(['sts' => true, 'msg' => 'Message send succesfuly!', 'message' => $message]);
-        }else{
+        } else {
             return response()->json(['sts' => false, 'msg' => 'Unable to send message!']);
         }
     }
 
-    public function getUserMessage(Request $request){
+    public function getUserMessage(Request $request)
+    {
         $my_id = Auth::id();
         $user_id = $request->id;
         //$users = User::where('id', '!=', Auth::id())->get();
 
         $messages = Chat::orderBy('created_at', 'asc')
-        ->where(function ($query) use ($user_id, $my_id) {
-            $query->where('sender_id', $my_id)->where('receiver_id', $user_id);
-        })->orWhere(function ($query) use ($user_id, $my_id) {
-            $query->where('sender_id', $user_id)->where('receiver_id', $my_id);
-        })->join('users', 'users.id','=','chats.sender_id')
-        ->join('users as r_user', 'r_user.id','=','chats.receiver_id', 'LEFT')
-        ->select('chats.*', 'users.firstname as s_fname', 'users.lastname as s_lname', 'r_user.firstname as r_fname', 'r_user.lastname as r_lname')
-        ->get();
+            ->where(function ($query) use ($user_id, $my_id) {
+                $query->where('sender_id', $my_id)->where('receiver_id', $user_id);
+            })->orWhere(function ($query) use ($user_id, $my_id) {
+                $query->where('sender_id', $user_id)->where('receiver_id', $my_id);
+            })->join('users', 'users.id', '=', 'chats.sender_id')
+            ->join('users as r_user', 'r_user.id', '=', 'chats.receiver_id', 'LEFT')
+            ->select('chats.*', 'users.firstname as s_fname', 'users.lastname as s_lname', 'r_user.firstname as r_fname', 'r_user.lastname as r_lname')
+            ->get();
 
-        if($messages){
+        if ($messages) {
             return response()->json(['sts' => true,  'chats' => $messages]);
-        }else{
+        } else {
             return response()->json(['sts' => false, 'msg' => '']);
         }
     }
 
-    
-
+    public function readMessage(Request $request)
+    {
+        $read = Chat::where('id', $request->id)->update([
+            'is_read' => 1
+        ]);
+        if ($read) {
+            return response()->json(['sts' => true]);
+        } else {
+            return response()->json(['sts' => false]);
+        }
+    }
 }
 
 

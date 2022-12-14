@@ -40,3 +40,4 @@ Route::post('/sendmessage',[MessageController::class,'sendMessage']);
 Route::post('/get-user-message',[MessageController::class,'getUserMessage']);
 Route::post('/read-message',[MessageController::class,'readMessage']);
 Route::post('/unread-message',[MessageController::class,'unreadMessage']);
+// Route::post('/search', [MessageController::class, 'search'] );

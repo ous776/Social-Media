@@ -18,12 +18,6 @@
    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles 
+    {{-- @livewireStyles  --}}
 
-<style>
-    .chat-message{
-        background-color: red;
-        
-    }
-</style>
 </head>

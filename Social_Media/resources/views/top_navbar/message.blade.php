@@ -15,7 +15,7 @@
              <a href="#" class="iq-sub-card">
                 <div class="d-flex  align-items-center">
                    <div class="">
-                      <img class="avatar-40 rounded" src="../assets/images/user/01.jpg" alt="">
+                      <img class="avatar-40 rounded" src="../assets/images/user/user.png" alt="">
                    </div>
                    <div class=" w-100 ms-3">
                       <h6 class="mb-0 ">Bni Emma Watson</h6>
@@ -26,7 +26,7 @@
              <a href="#" class="iq-sub-card">
                 <div class="d-flex align-items-center">
                    <div class="">
-                      <img class="avatar-40 rounded" src="../assets/images/user/02.jpg" alt="">
+                      <img class="avatar-40 rounded" src="../assets/images/user/user.png" alt="">
                    </div>
                    <div class="ms-3">
                       <h6 class="mb-0 ">Lorem Ipsum Watson</h6>
@@ -37,7 +37,7 @@
              <a href="#" class="iq-sub-card">
                 <div class="d-flex align-items-center">
                    <div class="">
-                      <img class="avatar-40 rounded" src="../assets/images/user/03.jpg" alt="">
+                      <img class="avatar-40 rounded" src="../assets/images/user/user.png" alt="">
                    </div>
                    <div class="ms-3">
                       <h6 class="mb-0 ">Why do we use it?</h6>
@@ -48,7 +48,7 @@
              <a href="#" class="iq-sub-card">
                 <div class="d-flex align-items-center">
                    <div class="">
-                      <img class="avatar-40 rounded" src="../assets/images/user/04.jpg" alt="">
+                      <img class="avatar-40 rounded" src="../assets/images/user/user.png" alt="">
                    </div>
                    <div class="ms-3">
                       <h6 class="mb-0 ">Variations Passages</h6>
@@ -59,7 +59,7 @@
              <a href="#" class="iq-sub-card">
                 <div class="d-flex align-items-center">
                    <div class="">
-                      <img class="avatar-40 rounded" src="../assets/images/user/05.jpg" alt="">
+                      <img class="avatar-40 rounded" src="../assets/images/user/user.png" alt="">
                    </div>
                    <div class="ms-3">
                       <h6 class="mb-0 ">Lorem Ipsum generators</h6>
