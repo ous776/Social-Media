@@ -1,52 +1,54 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" class="theme-fs-md">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>iTBook</title>
+    <title>iTBook </title>
 
-    <link rel="stylesheet" href="../assets/css/libs.min.css">
-    <link rel="stylesheet" href="../assets/css/socialv.css">
+
     <link rel="stylesheet" href="../assets/socialv.css">
+    <link rel="stylesheet" href="../assets/vendor/flatpickr/dist/flatpickr.min.css" />
+    <link rel="stylesheet" href="../assets/vendor/sweetalert2/dist/sweetalert2.min.css" />
+    <link rel="stylesheet" href="../assets/vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
     <link rel="stylesheet" href="../assets/css/customizer.css">
-    <link rel="stylesheet" href="../assets/vendor/css/all.min.css">
-    <link rel="stylesheet" href="../assets/vendor/css/remixicon.css">
-    <link rel="stylesheet" href="../assets/vendor/css/all.min.css">
-
-    <link rel="stylesheet"
-        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- @livewireStyles  --}}
-
+ 
 </head>
 
-
-
-    @include('includes/left_sidebar')
-
-    @include('includes/navbar')
-
-  
-        <div id="app"
-            style=" 
- 
-     width: 1000px;
-     height: 800px;
-     position: fixed;
-     overflow: hidden;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);">
+   
+<body class="iq-chat-theme">
+    <div id="app">
        
-                                    <message :auser="{{ Auth::user() }}" :users="{{ $users }}"></message>
-                 
-          
-            
-        </div>
+
+       <message :auser="{{ Auth::user() }}" :users="{{ $users }}"></message>
+       
+    </div>
+   
+   
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    
+    <script src="../assets/js/libs.min.js"></script>
+    <script src="../assets/vendor/lodash/lodash.min.js"></script>
+    <script src="../assets/js/setting/utility.js"></script>
+    <script src="../assets/js/setting/setting.js"></script>
+    <script src="../assets/js/setting/setting-init.js" defer></script>
+    <script src="../assets/js/slider.js"></script>
+    <script src="../assets/js/masonry.pkgd.min.js"></script>
+    <script src="../assets/js/enchanter.js"></script>
+    <script src="../assets/vendor/sweetalert2/dist/sweetalert2.min.js" async></script>
+    <script src="../assets/js/sweet-alert.js" defer></script>
+    <script src="../assets/js/customizer.js"></script>
+    <script src="../assets/js/charts/weather-chart.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="../assets/js/fslightbox.js" defer></script>
+    <script src="../assets/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+    <script src="../assets/js/lottie.js"></script>
+    <script src="../assets/js/select2.js"></script>
+    <script src="../assets/js/chat.js" defer></script>
 </body>
 
+</html>
 
-            {{-- @include('includes/footer') --}}

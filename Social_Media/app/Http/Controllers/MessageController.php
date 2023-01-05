@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Chat;
+use App\Models\Media;
+use App\Events\ReadMessage;
 use Illuminate\Support\Facades\Auth;
 use App\Events\MessageEvent;
 
@@ -34,35 +36,33 @@ class MessageController extends Controller
         return view('chat')->with($result);
     }
 
-    // public function search(Request $request)
-    // {
-    //     // $name = $request->firstname;
-    //     // $lastname = $request->lastname;
-
-    //     $received_data = $request['search'] ?? "";
-        
-    //     if($received_data != '')
-    //     {
-	
-	// $user = User::WHERE('firstname', 'LIKE', '%', $received_data, "%",
-	// 'OR', 'lastname', 'LIKE', "%", $received_data, '%',
-	// 'ORDER', 'BY', 'id',  'DESC')->get();
-	// ;
-    //     }
-    //     else 
-    //     {
-    //         $user = User::all();
-    //     }
+    public function search(Request $request)
+    {
+      $search = $request->input('search');
+      $users = User::where('id', '!=', Auth::id())->where('firstname', 'like', "%$search%")->get();
+      return response()->json($users);
+    }
 
 
-    //     if ($user) {
-    //         return response()->json(['sts' => true,  'users' => $user]);
-    //     } else {
-    //         return response()->json(['sts' => false, 'u' => '']);
-    //     }
-    // }
+    public function deleteMessage(Request $request)
+    {
+        $messageId = $request->input('messageId');
 
-
+        $deleted = Chat::where('id', $messageId)->delete();
+    
+        if ($deleted) {
+            return response()->json([
+                'sts' => true,
+                'msg' => 'Message deleted successfully'
+            ]);
+        } else {
+            return response()->json([
+                'sts' => false,
+                'msg' => 'Failed to delete message'
+            ]);
+        }
+    }
+    
     public function sendMessage(Request $request)
     {
         $msg = Chat::create([
@@ -70,6 +70,28 @@ class MessageController extends Controller
             'receiver_id' => $request->receiver,
             'message' => $request->message
         ]);
+
+        $imageName = [];
+        if($request->hasFile('images')){
+            $images = $request->file('images');
+            foreach($images as $image){
+                $name = time().'_'.$image->getClientOriginalName();
+                $type = explode('/', $image->getClientMimeType());  
+                $saved = $image->move(public_path('images'), $name);
+                $imageName[] = $name;
+                Media::create([
+                    'chat_id' => $msg->id,
+                    'name' => $name,
+                    'type' => $type[0]
+                ]);
+            }
+        }
+
+        if(!empty($imageName)){
+            Chat::where('id', $msg->id)->update([
+                'attachment' => (!is_null($imageName) ? 1 : null)
+            ]);
+        }
 
         $message = Chat::where('chats.id', $msg->id)
             ->join('users', 'users.id', '=', 'chats.sender_id')
@@ -97,8 +119,10 @@ class MessageController extends Controller
                 $query->where('sender_id', $my_id)->where('receiver_id', $user_id);
             })->orWhere(function ($query) use ($user_id, $my_id) {
                 $query->where('sender_id', $user_id)->where('receiver_id', $my_id);
-            })->join('users', 'users.id', '=', 'chats.sender_id')
+            })
+            ->join('users', 'users.id', '=', 'chats.sender_id')
             ->join('users as r_user', 'r_user.id', '=', 'chats.receiver_id', 'LEFT')
+            ->with('media')
             ->select('chats.*', 'users.firstname as s_fname', 'users.lastname as s_lname', 'r_user.firstname as r_fname', 'r_user.lastname as r_lname')
             ->get();
 
@@ -109,91 +133,29 @@ class MessageController extends Controller
         }
     }
 
-    public function readMessage(Request $request)
-    {
-        $read = Chat::where('id', $request->id)->update([
-            'is_read' => 1
-        ]);
-        if ($read) {
+    public function Mediafile(Request $request){
+        return Media::where('id', $request->id)->first();
+    }
+
+
+    public function unreadMessage(Request $request){
+        $my_id = Auth::id();
+        $user_id = $request->sender;
+
+        $messages = Chat::where('receiver_id', $user_id)->where('is_read', '=', 0)->get();
+        broadcast(new ReadMessage($messages, $request->sender));
+        return response()->json(['sts' => true]);
+    }
+
+    public function readMessage(Request $request){
+        $read = Chat::where('receiver_id', $request->receiver)
+        ->where('is_read', '=', 0)
+        ->update(['is_read' => 1]);
+        if($read){
             return response()->json(['sts' => true]);
-        } else {
+        }else{
             return response()->json(['sts' => false]);
         }
     }
 }
 
-
-// public function __construct(){
-//     $this->middleware('auth');
-// }
-
-
-// public function chat(){
-//     $result['users']  = User::all();
-    
-//     $result['users'] = User::where('id', '!=', Auth::id())->get();
-//     return view('chat')->with($result);
-// }
-
-// public function sendMessage(Request $request){
-//     $msg = Message::create([
-//         'sender_id' => Auth::id(),
-//         'receiver_id' => $request->receiver,
-//         'message' => $request->message
-//     ]);
-
-//     $message = Message::where('messages.id', $msg->id)
-//     ->join('users', 'users.id','=','messages.sender_id')
-//     ->join('users as r_user', 'r_user.id','=','messages.receiver_id', 'LEFT')
-//     ->select('messages.*', 'users.firstname as s_fname', 'users.lastname as s_lname', 'r_user.firstname as r_fname', 'r_user.lastname as r_lname')
-//     ->first();
-    
-//     broadcast(new MessageEvent($message, $request->receiver));
-    
-
-//     if($message){
-//         return response()->json(['sts' => true, 'msg' => 'Message send succesfuly!', 'message' => $message]);
-//     }else{
-//         return response()->json(['sts' => false, 'msg' => 'Unable to send message!']);
-//     }
-// }
-
-// public function unreadMessage(Request $request){
-//     return response()->json(['sts' => true]);
-//     // broadcast(new ReadMessage($message, $request->receiver));
-// }
-
-// public function getUserMessage(Request $request){
-//     $my_id = Auth::id();
-//     $user_id = $request->id;
-
-//     $messages = Message::orderBy('created_at', 'asc')
-//     ->where(function ($query) use ($user_id, $my_id) {
-//         $query->where('sender_id', $my_id)->where('receiver_id', $user_id);
-//     })->orWhere(function ($query) use ($user_id, $my_id) {
-//         $query->where('sender_id', $user_id)->where('receiver_id', $my_id);
-//     })->join('users', 'users.id','=','messages.sender_id')
-//     ->join('users as r_user', 'r_user.id','=','messages.receiver_id', 'LEFT')
-//     ->select('messages.*', 'users.firstname as s_fname', 'users.lastname as s_lname', 'r_user.firstname as r_fname', 'r_user.lastname as r_lname')
-//     ->get();
-
-//     if($messages){
-//         return response()->json(['sts' => true, 'messages' => $messages]);
-//     }else{
-//         return response()->json(['sts' => false, 'msg' => '']);
-//     }
-// }
-
-// public function readMessage(Request $request){
-//     $read = Message::where('id', $request->id)->update([
-//         'is_read' => 1
-//     ]);
-//     if($read){
-//         return response()->json(['sts' => true]);
-//     }else{
-//         return response()->json(['sts' => false]);
-//     }
-// }
-
-
-// }

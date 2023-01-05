@@ -25,7 +25,6 @@ class MessageEvent
      */
     public function __construct($messages, $user_id)
     {
-        Log::info('message fired');
         $this->messages = $messages;
         $this->user_id = $user_id;
     }

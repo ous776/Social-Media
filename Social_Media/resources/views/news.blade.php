@@ -1,10 +1,10 @@
-@include('header')
+@include('includes/header')
 
-@include('left_sidebar')
+@include('includes/left_sidebar')
 
-@include('navbar')
+@include('includes/navbar')
 
-@include('right_sidebar')
+@include('includes/right_sidebar')
 
 <div class="position-relative">
 </div>
@@ -59,4 +59,4 @@
 </div>
 </div>
 
-@include('footer')
+@include('includes/footer')

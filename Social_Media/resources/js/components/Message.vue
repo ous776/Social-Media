@@ -1,12 +1,11 @@
 <template>
-    <aside class="sidebar  sidebar-base border-end shadow-none" data-sidebar="responsive">
-        <div class="chat-search " style="padding-top: 45px">
+    <aside class="sidebar sidebar-chat sidebar-base border-end shadow-none" data-sidebar="responsive">
+        <div class="chat-search pt-3 px-3">
             <div class="d-flex align-items-center">
                 <div class="chat-profile me-3 avatar-60 rounded-pill text-primary btn-icon bg-body">
-                    <img src="../../../public/assets/images/user/user.png" alt="101" class="avatar-50  rounded"
+                    <img src="../../../public/assets/images/user/user.png" alt="101" class="avatar-60  rounded"
                         loading="lazy">
                 </div>
-
                 <div class="chat-caption">
                     <h5 class="mb-0">{{ auser.firstname + " " + auser.lastname }}</h5>
                     <p class="m-0">Student</p>
@@ -15,8 +14,13 @@
 
             <div class="chat-searchbar mt-4 mb-2">
                 <div class="form-group chat-search-data m-0">
-                    <input type="text" class="form-control round" id="chat-search" placeholder="Search">
+                    <form id="searchForm">
+                        <input type="text" name="search" class="form-control round" id="searchInput"
+                            placeholder="Search">
+                    </form>
+                    <ul id="searchResults">
 
+                    </ul>
                 </div>
             </div>
         </div>
@@ -24,23 +28,24 @@
             <!-- Sidebar Menu Start -->
             <ul class="nav navbar-nav iq-main-menu mb-5 pb-5" id="sidebar-menu" role="tablist">
                 <li class="nav-item static-item mt-3">
-                    <h5 class="default-icon">Conversations</h5>
+                    <a class="nav-link static-item disabled" href="#" tabindex="-1">
+                        <h5 class="default-icon">Public Channels</h5>
+                    </a>
                 </li>
-                <hr>
-                <li class="nav-item iq-chat-list active user" v-for="(user, index) in users" :key="index">
-                    <a href="#user-content-101" class="nav-link  d-flex gap-3 active" data-bs-toggle="tab" role="tab"
+                <li class="nav-item iq-chat-list active" v-for="(user, index) in users" :key="index">
+                    <a href="#user-content-101" class="nav-link  d-flex gap-3" data-bs-toggle="tab" role="tab"
                         aria-controls="user-content-101" aria-selected="true" @click="getUserMessage(user.id)"
                         :id="user.id">
                         <div class="position-relative">
-                            <img src="../../../public/assets/images/user/user.png" alt="user" class="avatar-40 rounded"
-                                loading="lazy">
-
+                            <img src="../../../public/assets/images/user/user.png" alt="status-101"
+                                class="avatar-50 rounded" loading="lazy">
+                            <div class="iq-profile-badge bg-danger"></div>
                         </div>
                         <div class="d-flex align-items-center w-100 iq-userlist-data">
                             <div class="d-flex flex-grow-1 flex-column">
                                 <div class="d-flex align-items-center gap-1">
-                                    <p class="mb-0 text-ellipsis short-1 flex-grow-1 iq-userlist-name">{{ user.firstname
-                                    }}</p>
+                                    <p class="mb-0 text-ellipsis short-1 flex-grow-1 iq-userlist-name">
+                                        {{ user.firstname }} {{ user.lastname }}</p>
                                     <span class="badge rounded-pill bg-primary">20</span>
                                 </div>
                                 <div class="d-flex align-items-center gap-2">
@@ -51,12 +56,11 @@
                         </div>
                     </a>
                 </li>
-
             </ul>
 
             <!-- Sidebar Menu End -->
         </div>
-        <!-- {{-- <div class="sidebar-footer"></div> --}} -->
+        <div class="sidebar-footer"></div>
     </aside>
     <main class="main-content">
         <div class="container-fluid content-inner p-0" id="page_layout">
@@ -66,22 +70,39 @@
                         <header class="d-flex justify-content-between align-items-center bg-white pt-3  ps-3 pe-3 pb-3">
                             <div class="d-flex align-items-center">
                                 <div class="d-block d-xl-none">
-
+                                    <button class="btn btn-sm btn-primary rounded btn-icon me-3" data-toggle="sidebar"
+                                        data-active="true">
+                                        <span class="btn-inner">
+                                            <svg width="20px" viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                    </button>
                                 </div>
                                 <div class="avatar chat-user-profile m-0 me-3">
-                                    <br><br><br>
+                                    <img src="../../../public/assets/images/user/user.png" alt="avatar"
+                                        class="avatar-50 rounded " loading="lazy">
                                     <div class="iq-profile-badge  bg-danger"></div>
 
                                 </div>
-                                <h5 class="mb-0">Team Discussions</h5>
+                                <!-- <h5 class="mb-0">5555</h5> -->
                                 <small class="text-capitalize"></small>
                             </div>
 
+
+                            <div class="chat-header-icons d-inline-flex ms-auto">
+                                <router-link to="/home">
+                                    <img src="/icons/home.png" style="width:60px;" class="ms-auto" />
+                                </router-link>
+                            </div>
                         </header>
                     </div>
+
                     <div class="card-body chat-body bg-body" :class="'chat-content scroller user_' + receiver"
                         id="privateMessageBox">
-                        <div class="message-div" v-for="(message, index) in messages" :key="index">
+                        <div class="message-div" v-for="(message, index) in messages" :key="index" id="messages">
                             <div class="chat-day-title" style="padding-top: 20px">
 
                             </div>
@@ -89,7 +110,7 @@
                                 <div class="chat-profile">
                                     <img src="../../../public/assets/images/user/user.png" alt="chat-user"
                                         class="avatar-40 rounded" loading="lazy">
-                                    <small class="iq-chating p-0 mb-0">16:34</small>
+                                    <small class="iq-chating p-0 mb-0"></small>
                                 </div>
                                 <div v-if="message.attachment != null">
                                     <div class="iq-chat-text">
@@ -121,28 +142,23 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center justify-content-end">
-                                            <div v-if="message.message != null"
-                                                class="iq-chating-content d-flex align-items-center ">
-                                                <p class="mr-2 mb-0">{{ message.message }}</p>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
-                                <div v-if="message.message != null">
-                                    <div class="chat-detail">
-                                        <div class="chat-message">
-                                            <p>{{ message.message }} 😄</p>
+                                <div class="iq-chat-text" v-if="message.message != null">
+                                    <div class="d-flex align-items-center justify-content-end">
+                                        <div class="iq-chating-content d-flex align-items-center ">
+                                            <p class="message mr-2 mb-0">{{ message.message }} </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
 
                             <div v-if="message.sender_id != auser.id" class="iq-message-body iq-other-user">
                                 <div class="chat-profile">
                                     <img src="../../../public/assets/images/user/user.png" alt="chat-user"
                                         class="avatar-40 rounded" loading="lazy">
-                                    <small class="iq-chating p-0 mb-0 d-block">16:40</small>
+                                    <small class="iq-chating p-0 mb-0 d-block"></small>
                                 </div>
                                 <div v-if="message.attachment != null">
                                     <div class="iq-chat-text">
@@ -174,33 +190,32 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center justify-content-end">
-                                            <div v-if="message.message != null"
-                                                class="iq-chating-content d-flex align-items-center ">
-                                                <p class="mr-2 mb-0">{{ message.message }}</p>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
-                                <div v-if="message.message != null">
-                                    <div class="chat-detail">
-                                        <div class="chat-message">
-                                            <p>{{ message.message }} 😄</p>
+                                <div class="iq-chat-text" v-if="message.message != null">
+                                    <div class="d-flex align-items-center justify-content-start">
+                                        <div class="iq-chating-content d-flex align-items-center ">
+                                            <p class="mr-2 mb-0">{{ message.message }} </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer px-3 py-3 border-top rounded-0 bg-white">
-                        <form class="d-flex align-items-center" @submit.prevent="">
 
-                            <input type="text" v-model="textMessage" name="message" class="form-control me-3"
-                                placeholder="Type your message" @keyup.enter="sendMessage()" @keydown="onTyping"
+                    </div>
+
+                    <div class="card-footer px-3 py-3 border-top rounded-0">
+                        <form class="d-flex align-items-center" @submit.prevent="">
+                            <input type="hidden" v-model="receiver" />
+                            <label for="file-input">
+                                <img src="../../../public/assets/images/paper-clip.png"
+                                    style="margin-right: 10px; width: 20px; height: 20px" />
+                            </label>
+                            <input id="file-input" class="file_message" type="file" name="file" style="display:none"
+                                @change="previewImage" multiple />
+                            <input type="text" v-model="textMessage" name="message" class="form-control me-3 "
+                                placeholder="Type your message" id="oo" @keyup.enter="sendMessage()" @keydown="onTyping"
                                 @keypress="onTyping" @keyup="onTyping">
-                            <!-- <input type="hidden" v-model="receiver" />
-                            <input type="file" name="file" class="file_message" @change="previewImage" multiple />
-                            <i class="ri-folder-upload-line file_upload_message"></i> -->
                             <button type="submit" class="btn btn-primary d-flex align-items-center"
                                 @click="sendMessage()">
                                 <svg class="icon-20" width="18" viewBox="0 0 20 21" fill="none"
@@ -215,19 +230,82 @@
                     </div>
                 </div>
             </div>
+
         </div>
+
     </main>
+
+
 </template>
 
 
 <script >
+
 import { ref, onUpdated, onMounted } from 'vue'
 import axios from 'axios';
+
+$(document).ready(function() {
+            $('input[type="file"]').change(function(e) {
+                var geekss = e.target.files[0].name;
+                $("input#oo").val(geekss);
+
+            });
+        });
+
+$(document).ready(function () {
+
+    $('#searchInput').keyup(function () {
+        var search = $(this).val();
+        $.ajax({
+            url: '/search',
+            type: 'GET',
+            data: { search: search },
+            success: function (response) {
+                $('#searchResults').empty();
+                $.each(response, function (index, user) {
+                    var userId = user.id;
+                    $('#searchResults').append(
+
+                        '<li class="nav-item iq-chat-list active">' +
+
+                        '<div class="position-relative" style="margin-top:10px; position: relative">' +
+                        '<img src="assets/images/user/user.png" class="avatar-50 rounded" loading="lazy"/>' +
+                        '</div>' +
+                        '<div style=" align-items: center; width:100px;">' +
+                        '<div class="d-flex flex-grow-1 flex-column">' +
+                        '<div class="d-flex align-items-center gap-1">' +
+                        '<p class="mb-0 text-ellipsis short-1 flex-grow-1 iq-userlist-name">' +
+                        user.firstname + ' ' + user.lastname + '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+
+                        '</li>'
+
+                    );
+
+                    $('#searchResults .nav-item').click(function () {
+                        $('#searchResults').empty();
+                        
+                        getUserMessage(userId);
+                    });
+                });
+            }
+
+        });
+    }).delay(500);
+
+});
+
+
+
+
 export default {
     props: ['auser', 'users'],
     setup(props) {
         const formData = new FormData();
         const receiver = ref('')
+        const user = ref('')
         const messages = ref([])
         const textMessage = ref('')
         const typingFriend = ref({})
@@ -236,17 +314,26 @@ export default {
         const preview_list = ref([])
         const image_list = ref([])
 
-        const getUserMessage = (id) => {
+      
+
+        window.getUserMessage = (id) => {
             readMessage(id);
             receiver.value = id;
+
             axios.post('/get-user-message', {
                 id: id
             }).then((res) => {
                 console.log(res);
                 setTimeout(scrollToEnd, 100);
-                messages.value = res.data.chats;
+                // messages.value = res.data.chats;
+
+                const chatsData = res.data.chats;
+                messages.value = chatsData;
+                user.value = chatsData;
             })
         }
+
+
 
         Echo.private('user-message.' + props.auser.id)
             .listen('MessageEvent', (message) => {
@@ -354,8 +441,11 @@ export default {
             receiver,
             getUserMessage,
             textMessage,
-            previewImage
+            previewImage,
+            user
+            //  getUserInfo
         }
-    }
-}
+    },
+
+};
 </script>

@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('media', function (Blueprint $table) {
             Schema::create('media', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('chat_id');
+                $table->unsignedBigInteger('chat_id');
                 $table->string('name');
-                $table->text('type')->nullable();
+                $table->string('type');
                 $table->timestamps();
+
+                $table->foreign('chat_id')->references('id')->on('chats')->onDelete('cascade');
             });
         });
     }

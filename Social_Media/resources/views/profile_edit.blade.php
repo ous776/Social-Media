@@ -1,8 +1,8 @@
-@include('header')
-@include('left_sidebar')
+@include('includes/header')
+@include('includes/left_sidebar')
 
-@include('navbar')
-@include('right_sidebar')
+@include('includes/navbar')
+@include('includes/right_sidebar')
 
 <div class="position-relative">
 </div>
@@ -315,4 +315,4 @@
 </div>
 </div>
 
-@include('footer')
+@include('includes/footer')

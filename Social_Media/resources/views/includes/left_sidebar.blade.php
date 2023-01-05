@@ -15,50 +15,50 @@
                       <i class="las la-user"></i><span>Profile</span>
                    </a>
                 </li>
-                <li class="">
+                {{-- <li class="">
                    <a href="{{ url('/friend') }}" class=" ">
                       <i class="las la-user-friends"></i><span>Friend List</span>
                    </a>
-                </li>
+                </li> --}}
 
                 <li class="">
                    <a href="{{ url('/groups') }}" class=" ">
                       <i class="las la-users"></i><span>Group</span>
                    </a>
                 </li>
-                <li class=" ">
+                {{-- <li class=" ">
                    <a href="{{ url('/gallery') }}" class=" ">
                       <i class="las la-image"></i><span>Gallery</span>
                    </a>
-                </li>
+                </li> --}}
 
                 <li class=" ">
                    <a href="{{ url('/events') }}" class=" ">
                       <i class="las la-film"></i><span>Events</span>
                    </a>
 
-                <li class=" ">
+                {{-- <li class=" ">
                    <a href="{{ url('/notification') }}" class=" ">
                       <i class="las la-bell"></i><span>Notification</span>
                    </a>
-                </li>
-                <li class=" ">
+                </li> --}}
+                {{-- <li class=" ">
                    <a href="{{ url('/file') }}" class=" ">
                       <i class="las la-file"></i><span>Files</span>
                    </a>
-                </li>
+                </li> --}}
 
                 <li class=" ">
-                   <a href="{{ url('/chat') }}" class=" ">
+                   <a href="{{ url('/chat') }}" class=" " target="blank">
                       <i class="lab la-rocketchat"></i><span>Chat</span>
                    </a>
                 </li>
 
-                <li class=" ">
+                {{-- <li class=" ">
                    <a href="{{ url('/calender') }}" class=" ">
                       <i class="las la-calendar"></i><span>Calendar</span>
                    </a>
-                </li>
+                </li> --}}
 
 
              </ul>

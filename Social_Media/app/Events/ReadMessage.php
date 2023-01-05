@@ -9,21 +9,21 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Auth;
 
 class ReadMessage
 {
-   
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $messages;
+    public $user_id;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($messages)
+    public function __construct($messages, $user_id)
     {
         $this->messages = $messages;
+        $this->user_id = $user_id;
     }
 
     /**
@@ -33,13 +33,13 @@ class ReadMessage
      */
     public function broadcastOn()
     {
-        return new PresenceChannel('read-message.'.Auth::id());
+        return new PrivateChannel('unread-message.'.$this->user_id);
     }
 
     public function broadcastWith(){
-        broadcast(new ReadMessage('text'));
         return [
-            'messages' => 'hello notification'
+            'messages' => $this->messages,
+            'receiver' => $this->user_id
         ];
     }
 }

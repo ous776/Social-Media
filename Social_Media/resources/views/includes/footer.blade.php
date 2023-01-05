@@ -13,13 +13,7 @@
       </div>
    </div>
 </footer>
-<nav class="iq-float-menu">
-  
-  
-   <button class="iq-float-menu-item bg-danger" data-toggle="tooltip" data-placement="top" title="Color Mode"
-      id="dark-mode" data-active="true"><i class="ri-sun-line"></i></button>
-   
-</nav>
+
 
 <script src="../assets/js/libs.min.js"></script>
 

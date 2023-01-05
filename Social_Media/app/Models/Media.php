@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
     use HasFactory;
-    protected $fillable = ['message_id', 'name','type'];
+    protected $fillable = ['chat_id', 'name','type'];
 
     public function message()
     {
