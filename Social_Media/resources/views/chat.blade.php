@@ -6,12 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>iTBook </title>
 
-
-    <link rel="stylesheet" href="../assets/socialv.css">
-    <link rel="stylesheet" href="../assets/vendor/flatpickr/dist/flatpickr.min.css" />
-    <link rel="stylesheet" href="../assets/vendor/sweetalert2/dist/sweetalert2.min.css" />
-    <link rel="stylesheet" href="../assets/vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
-    <link rel="stylesheet" href="../assets/css/customizer.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- @livewireStyles  --}}
  
